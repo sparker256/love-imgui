@@ -1,7 +1,6 @@
 # Build Products
 *.dll
 *.so
-main.lua
 .clang_complete
 
 # CMake

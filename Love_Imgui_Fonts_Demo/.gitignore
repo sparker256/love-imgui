@@ -1,18 +1,1 @@
-# Build Products
-*.dll
 *.so
-main.lua
-.clang_complete
-
-# CMake
-CMakeCache.txt
-CMakeFiles
-CMakeScripts
-Makefile
-cmake_install.cmake
-install_manifest.txt
-CTestTestfile.cmake
-compile_commands.json
-
-# Build directory
-build
