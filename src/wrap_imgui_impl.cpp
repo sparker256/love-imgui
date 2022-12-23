@@ -70,18 +70,29 @@ static int w_NewFrame(lua_State *L)
 // Util
 const char* getRealDirectoryIfExists(lua_State *L, const char* relativePath)
 {
-	if (L == nullptr || relativePath == nullptr)
+	if (L == nullptr)
 	{
+            puts("if (L == nullptr)");
 		return nullptr;
 	}
+	
+	if (relativePath == nullptr)
+	{
+                puts("if (relativePath == nullptr)");
+	        puts(relativePath);
+		return nullptr;
+	}	
 
 	int originalStackSize = lua_gettop(L);
 	lua_getglobal(L, "love");
 	if (lua_isnil(L, -1))
 	{
+            puts("if (lua_isnil(L, -1))");
 		lua_pop(L, 1);
 		return nullptr;
 	}
+	
+    puts("getRealDirectoryIfExists partway through");
 
 	lua_getfield(L, -1, "filesystem");
 	lua_getfield(L, -1, "getRealDirectory");
@@ -93,10 +104,16 @@ const char* getRealDirectoryIfExists(lua_State *L, const char* relativePath)
 	{
 		size_t size = 0;
 		const char* tmp = lua_tolstring(L, -1, &size);
+        puts("if (!lua_isnil(L, -1))");
 		result = strndup(tmp, size);
 	}
 
 	lua_pop(L, lua_gettop(L) - originalStackSize);
+    if (result == nullptr)
+    {
+        puts("if (result == nullptr)");
+    }
+    puts("getRealDirectoryIfExists just before return");
 	return result;
 }
 
@@ -224,12 +241,13 @@ static int w_SetGlobalFontFromFileTTF(lua_State *L)
 static int w_AddFontFromFileTTF(lua_State *L) {
 	size_t filenameSize;
 	const char* filename = luaL_checklstring(L, 1, &filenameSize);
+	puts(filename);
 	float pixelSize = luaL_checknumber(L, 2);
 
 	const char* basePath = getRealDirectoryIfExists(L, filename);
 	if (basePath == nullptr) {
 		lua_pushstring(L, "File does not exist.");
-		lua_error(L);
+	        lua_error(L);
 		return 0;
 	}
 

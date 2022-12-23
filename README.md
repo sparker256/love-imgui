@@ -170,10 +170,10 @@ end
 ```
 ### Fonts
 
-Since `ImGui::IO` isn't exposed to Lua, the `ImFontAtlas::AddFontFileFromTTF` function is forwarded to the main API table, enabling the use of custom fonts:
+Since `ImGui::IO` isn't exposed to Lua, the `ImFontAtlas::AddFontFromFileTTF` function is forwarded to the main API table, enabling the use of custom fonts:
 
 ```Lua
-local fontHandle = imgui.AddFontFileFromTTF("pathToFont.tff", 16)
+local fontHandle = imgui.AddFontFromFileTTF("pathToFont.tff", 16)
 imgui.PushFont(fontHandle)
 imgui.Text "Hello"
 imgui.PopFont()

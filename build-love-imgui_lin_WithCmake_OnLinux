@@ -1,0 +1,22 @@
+#!/bin/bash
+#
+# How to run
+# cd $love-imgui
+# ./build-love-imgui_lin_WithCmake_OnLinux
+
+rm -r Love_Imgui_Fonts_Demo/imgui.*
+
+
+# Linux build
+
+rm -r build/*
+cmake -Bbuild -H. -DCMAKE_INSTALL_PREFIX=$PWD/installdir -DCMAKE_BUILD_TYPE=Release
+cmake --build build --config Release --target install
+cp ./build/imgui.so ./Love_Imgui_Fonts_Demo/
+
+love /home/bill/love-imgui_builder/Sparker256Fork/love-imgui/Love_Imgui_Fonts_Demo
+
+
+exec $SHELL
+#
+
