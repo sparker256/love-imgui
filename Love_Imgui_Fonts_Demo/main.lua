@@ -8,12 +8,14 @@ local clearColor = { 0.2, 0.2, 0.2 }
 local comboSelection = 1
 local textValue = "text"
 -- File path is not working so have to put the font in the root.
+local FreeSerifBold18 = imgui.AddFontFromFileTTF("FreeSerifBold.ttf", 18)
 local FreeSerif12 = imgui.AddFontFromFileTTF("FreeSerif.ttf", 12)
 local FreeSerif16 = imgui.AddFontFromFileTTF("FreeSerif.ttf", 16)
 local FreeMonoBold12 = imgui.AddFontFromFileTTF("FreeMonoBold.ttf", 12)
 local FreeMonoBold16 = imgui.AddFontFromFileTTF("FreeMonoBold.ttf", 16)
 -- this full path is not working
--- local FreeSansBold16_fullpath = imgui.AddFontFromFileTTF("/home/bill/love-imgui_builder/Sparker256Fork/love-imgui/Love_Imgui_Fonts_Demo/FreeSansBold.ttf", 16)
+-- local FreeSansBold12_fullpath = imgui.AddFontFromFileTTF("/home/bill/love-imgui_builder/Sparker256Fork/love-imgui/Love_Imgui_Fonts_Demo/FreeSansBold.ttf", 12)
+local FreeSansBold12 = imgui.AddFontFromFileTTF("FreeSansBold.ttf", 12)
 local FreeSansBold16 = imgui.AddFontFromFileTTF("FreeSansBold.ttf", 16)
 
 --
@@ -70,28 +72,36 @@ function love.draw()
         showTestWindow = imgui.ShowDemoWindow(true)
     end
     
-    imgui.PushFont(FreeSerif12)
-    imgui.Text "FreeSerif.ttf 12 Pixels"
-    imgui.PopFont()
-    
-    imgui.PushFont(FreeSerif16)
-    imgui.Text "FreeSerif.ttf  16 Pixels"
+    imgui.PushFont(FreeSerifBold18)
+    imgui.Text "Lets Test Some Fonts   FreeSerifBold.ttf Pixel Size 18"
     imgui.PopFont()
     
     imgui.PushFont(FreeSerif12)
-    imgui.Text "FreeMonoBold.ttf 12 Pixels"
+    imgui.Text "FreeSerif.ttf Pixel Size 12"
     imgui.PopFont()
     
     imgui.PushFont(FreeSerif16)
-    imgui.Text "FreeMonoBold.ttf  16 Pixels"
+    imgui.Text "FreeSerif.ttf  Pixel Size 16"
+    imgui.PopFont()
+    
+    imgui.PushFont(FreeMonoBold12)
+    imgui.Text "FreeMonoBold.ttf Pixel Size 12"
+    imgui.PopFont()
+    
+    imgui.PushFont(FreeMonoBold16)
+    imgui.Text "FreeMonoBold.ttf  Pixel Size 16"
     imgui.PopFont()
 
 --  This is not working and not sure why
 --  For some reason it does not like the full path and thinks it is nullptr
 --  /home/bill/love-imgui_builder/Sparker256Fork/love-imgui/Love_Imgui_Fonts_Demo/FreeSansBold.ttf    
 --    imgui.PushFont(FreeSansBold16_fullpath)
+    imgui.PushFont(FreeSansBold12)
+    imgui.Text "FreeSansBold.ttf  Pixel Size 12"
+    imgui.PopFont()
+    
     imgui.PushFont(FreeSansBold16)
-    imgui.Text "FreeSansBold.ttf  16 Pixels"
+    imgui.Text "FreeSansBold.ttf  Pixel Size 16"
     imgui.PopFont()
     
 
